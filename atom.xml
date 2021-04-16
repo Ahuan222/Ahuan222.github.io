@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Ahuan&#39;s blog</title>
   
   
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-04-13T04:59:49.992Z</updated>
+  <updated>2021-04-16T08:45:26.502Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,22 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>我的第一篇博客文章</title>
+    <title>hexo+GitHub搭建个人博客具体步骤</title>
     <link href="http://example.com/2021/04/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/"/>
     <id>http://example.com/2021/04/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/</id>
     <published>2021-04-13T04:29:12.000Z</published>
-    <updated>2021-04-13T04:59:49.992Z</updated>
+    <updated>2021-04-16T08:45:26.502Z</updated>
     
-    <content type="html"><![CDATA[<p>使用hexo+GitHub进行搭建以及部署，简便快捷<br>不知道<br>1233444<br>123444<br>错哪里了<br>烦人！！！<br> toc: true</p>]]></content>
+    <content type="html"><![CDATA[        <h2 id="搭建步骤：">          <a href="#搭建步骤：" class="heading-link"><i class="fas fa-link"></i></a><a href="#搭建步骤：" class="headerlink" title="搭建步骤："></a>搭建步骤：</h2>      <h2 id><a href="#" class="headerlink" title></a><img src="/2021/04/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/blog\source\images\hoex+githab部署个人博客.png"></h2>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;使用hexo+GitHub进行搭建以及部署，简便快捷&lt;br&gt;不知道&lt;br&gt;1233444&lt;br&gt;123444&lt;br&gt;错哪里了&lt;br&gt;烦人！！！&lt;br&gt; toc: true&lt;/p&gt;
-</summary>
+    <summary type="html">
+        &lt;h2 id=&quot;搭建步骤：&quot;&gt;
+          &lt;a href=&quot;#搭建步骤：&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#搭建步骤：&quot; class=&quot;headerlink&quot; </summary>
       
     
     
+    
+    <category term="关于博客" scheme="http://example.com/categories/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/"/>
     
     
     <category term="用hexo搭建博客" scheme="http://example.com/tags/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
