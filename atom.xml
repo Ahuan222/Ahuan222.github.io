@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-05-30T08:38:59.986Z</updated>
+  <updated>2021-09-19T13:08:23.662Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>题2：两数相加</title>
+    <link href="http://example.com/2021/09/19/%E7%AE%97%E6%B3%95/%E9%A2%982%EF%BC%9A%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/"/>
+    <id>http://example.com/2021/09/19/%E7%AE%97%E6%B3%95/%E9%A2%982%EF%BC%9A%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/</id>
+    <published>2021-09-19T13:06:33.000Z</published>
+    <updated>2021-09-19T13:08:23.662Z</updated>
+    
+    <content type="html"><![CDATA[        <h4 id="题2：两数相加">          <a href="#题2：两数相加" class="heading-link"><i class="fas fa-link"></i></a><a href="#题2：两数相加" class="headerlink" title="题2：两数相加"></a>题2：两数相加</h4>      <p>给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。</p><p>请你将两个数相加，并以相同形式返回一个表示和的链表。</p><p>你可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p><p><strong>示例 1：</strong></p><figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 &#x3D; [2,4,3], l2 &#x3D; [5,6,4]</span><br><span class="line">输出：[7,0,8]</span><br><span class="line">解释：342 + 465 &#x3D; 807.</span><br></pre></td></tr></table></div></figure><p><strong>示例 2：</strong></p><figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 &#x3D; [0], l2 &#x3D; [0]</span><br><span class="line">输出：[0]</span><br></pre></td></tr></table></div></figure><p><strong>示例 3：</strong></p><figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 &#x3D; [9,9,9,9,9,9,9], l2 &#x3D; [9,9,9,9]</span><br><span class="line">输出：[8,9,9,9,0,0,0,1]</span><br></pre></td></tr></table></div></figure><p><strong>提示：</strong></p><p>每个链表中的节点数在范围 [1, 100] 内<br>0 &lt;= Node.val &lt;= 9<br>题目数据保证列表表示的数字不含前导零</p><p><strong>题目分析：</strong>关键点在于处理好进位</p><ul><li>可能出现的情况：</li></ul><ol><li>l1.val+l2.val&lt;0，sum直接加入节点</li><li>l1.val+l2.val&gt;0，sum取模后加入节点，将sum/10当做进位，与下一节点相加</li><li>l1.length &gt; l2.length,l1多出来节点中的元素添加进下一节点即可</li><li>最后两个节点中的数相加后，需要检查一次进位。</li></ol><p><strong>解题思路：</strong></p><ul><li>创建一个dummy用来占位，curr用来遍历</li><li>用carry表示进位</li><li>判断两个链表是否为空，不为空，进行相加</li><li>检查carry是否为0，为0则直接存，不为0则加上carry的值</li><li>sum+=carry，用来计算进位后相加的和，用sum%10,来计算下一节点存放的数</li><li>carry的取值用Math.floor(sum/10)来计算。</li><li>最后在检查一次carry，为1则在下一节点添加，不为0则最直接返回。</li></ul><p><strong>图解：</strong></p><p><img src="/2021/09/19/%E7%AE%97%E6%B3%95/%E9%A2%982%EF%BC%9A%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/Users\ZhangHuan\Desktop\图片\Snipaste_2021-07-14_11-33-15.jpg"></p><p><strong>代码：</strong></p><figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> addTwoNumbers = <span class="function"><span class="keyword">function</span> (<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> dummy = <span class="keyword">new</span> ListNode();</span><br><span class="line">      <span class="keyword">let</span> curr = dummy;</span><br><span class="line">      <span class="keyword">let</span> carry = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span> (l1 !== <span class="literal">null</span> || l2 !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (l1 !== <span class="literal">null</span>) &#123;</span><br><span class="line">          sum += l1.val;</span><br><span class="line">          l1 = l1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (l2 !== <span class="literal">null</span>) &#123;</span><br><span class="line">          sum += l2.val;</span><br><span class="line">          l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        sum += carry;</span><br><span class="line">        curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">        carry = <span class="built_in">Math</span>.floor(sum / <span class="number">10</span>);</span><br><span class="line">        curr = curr.next;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;;</span><br><span class="line">  &lt;/script&gt;</span><br></pre></td></tr></table></div></figure><p><strong>补充知识点：</strong>dummy节点</p><ul><li>作为链表的头节点</li><li>解决链表头部的极端情况</li><li>在单向链表中返会dummy.next,对链表不产生影响</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">
+        &lt;h4 id=&quot;题2：两数相加&quot;&gt;
+          &lt;a href=&quot;#题2：两数相加&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#题2：两数相加&quot; class=&quot;header</summary>
+      
+    
+    
+    
+    <category term="LeetCode算法题" scheme="http://example.com/categories/LeetCode%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>题1：两数相加</title>
+    <link href="http://example.com/2021/09/17/%E7%AE%97%E6%B3%95/%E9%A2%981%EF%BC%9A%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+    <id>http://example.com/2021/09/17/%E7%AE%97%E6%B3%95/%E9%A2%981%EF%BC%9A%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
+    <published>2021-09-17T13:45:07.000Z</published>
+    <updated>2021-09-19T09:57:13.379Z</updated>
+    
+    <content type="html"><![CDATA[        <h4 id="题一：两数之和">          <a href="#题一：两数之和" class="heading-link"><i class="fas fa-link"></i></a><a href="#题一：两数之和" class="headerlink" title="题一：两数之和"></a>题一：两数之和</h4>      <p><strong>示例1：</strong></p><figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [2,7,11,15], target &#x3D; 9</span><br><span class="line">输出：[0,1]</span><br><span class="line">解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1] 。</span><br></pre></td></tr></table></div></figure><p><strong>示例2：</strong></p><figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [3,2,4], target &#x3D; 6</span><br><span class="line">输出：[1,2]</span><br></pre></td></tr></table></div></figure><p><strong>解题思路：</strong></p><ul><li><p>创建一个map</p></li><li><p>for循环遍历nums数组</p></li><li><p>用target减nums[i]（用来计算那个数字能跟减去的数字相加得到target）</p></li><li><p>检查map里有没有这个数，如果有则返回结果，如果没有则把num[i]当作key，i当作value放入map中。</p><p><strong>这样放的好处：</strong>map.has()检查的key,把数字当key,也就是实际的value。</p></li></ul><p><strong>图解：</strong><img src="/2021/09/17/%E7%AE%97%E6%B3%95/%E9%A2%981%EF%BC%9A%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/Users\ZhangHuan\Desktop\图片\Snipaste_2021-07-12_14-32-15.jpg"></p><p><strong>具体代码：</strong></p><figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span> (<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">       <span class="keyword">const</span> complement = target - nums[i]</span><br><span class="line">       <span class="keyword">if</span> (map.has(complement)) &#123;</span><br><span class="line">         <span class="keyword">return</span> (map.get(complement), i)</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         map.set(nums[i], i)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> []</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></div></figure><p><strong>补充知识点：</strong></p><p>1、map():</p><ul><li>Map是JavaScript中的数据结构，它允许存储[键，值]对，其中任何值都可以用作键或值。</li><li>Map集合中的键和值可以是任何类型，并且如果使用集合中已存在的键将值添加到Map集合中，则新值将替换旧值。</li><li>映射对象中元素的迭代按插入顺序完成，并且“for…”循环为每次迭代返回所有[键，值]对的数组。</li></ul><p>2、map.has():用于检查Map中是否存在具有指定键的元素。 </p><p>3、map.get():获取指定key对应的value</p><p>4、map.set():</p><ul><li><p><strong>set()方法</strong>为 <code>Map</code> 对象添加或更新一个指定了键（<code>key</code>）和值（<code>value</code>）的（新）键值对。</p></li><li><p><strong>语法：</strong>myMap.set(key, value);</p></li><li><p><strong>参数:</strong></p><p>key</p><p>  要添加至相应 <code>Map</code> 对象的元素的键。</p><p>value</p><p>要添加至相应 <code>Map</code> 对象的元素的值。</p></li><li><p>示例：</p></li></ul><figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myMap = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将一个新元素添加到 Map 对象</span></span><br><span class="line">myMap.set(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;foo&quot;</span>);</span><br><span class="line">myMap.set(<span class="number">1</span>, <span class="string">&quot;foobar&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在Map对象中更新某个元素的值</span></span><br><span class="line">myMap.set(<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;baz&quot;</span>);</span><br></pre></td></tr></table></div></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">
+        &lt;h4 id=&quot;题一：两数之和&quot;&gt;
+          &lt;a href=&quot;#题一：两数之和&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#题一：两数之和&quot; class=&quot;header</summary>
+      
+    
+    
+    
+    <category term="LeetCode算法题" scheme="http://example.com/categories/LeetCode%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>防抖和节流</title>
